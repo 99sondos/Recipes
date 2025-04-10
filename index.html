@@ -8,8 +8,35 @@
 
 <body>
 
+    <form id="addRecipeForm">
+        <input type="text" id="name" placeholder="Rättens namn" required />
+        <input type="text" id="ingredients" placeholder="Ingredienser " required />
+        <textarea id="preparationSteps" placeholder="Tillagningssteg" required></textarea>
+        <input type="number" id="cookingTime" placeholder="Tillagningstid (minuter)" required />
+        <input type="text" id="origin" placeholder="Ursprung" required />
+        <input type="text" id="spiceLevel" placeholder="Kryddighet" required />
+        <button type="submit">Lägg till rätt</button>
+      </form>
+
+
+
+      
     
-    
+      <table id="dishesTable">
+        <thead>
+          <tr>
+            <th>Rättens namn</th>
+            <th>Ingredienser</th>
+            <th>Tillagningssteg</th>
+            <th>Tid</th>
+            <th>Ursprung</th>
+            <th>Kryddighet</th>
+            <th>Åtgärder</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
 <script src="script.js"></script>
 </body>
 </html>
