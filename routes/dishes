@@ -24,6 +24,28 @@ router.get('/', async (req, res) => {
   }
 });
 
+//get begäran för min frontend
+// GET /api/dishes/:id - Hämta rätt baserat på ID
+router.get('/:id', async (req, res) => {
+    console.log('GET /api/dishes/:id – Hämtar rätt med ID:', req.params.id);  // Debugging log
+  
+    try {
+      // Försök att hitta rätten baserat på ID
+      const dish = await Dish.findById(req.params.id);  // Hämta rätt via ID
+  
+      // Om ingen rätt hittades
+      if (!dish) {
+        return res.status(404).json({ message: 'Rätten hittades inte' }); // Skicka 404 om rätten inte finns
+      }
+  
+      // Om rätten hittades, skicka tillbaka den som JSON
+      res.json(dish);
+    } catch (err) {
+      console.error('Fel vid hämtning:', err);
+      res.status(500).json({ message: 'Fel vid hämtning av rätt' });
+    }
+  });
+
 
 
 
@@ -47,6 +69,9 @@ router.get('/:name', async (req, res) => {
       res.status(500).json({ message: 'Fel vid hämtning av rätt' });
     }
   });
+
+
+  
   
 
 
