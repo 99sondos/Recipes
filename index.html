@@ -20,7 +20,7 @@
 
 
 
-      
+
     
       <table id="dishesTable">
         <thead>
@@ -37,6 +37,21 @@
         <tbody>
         </tbody>
       </table>
+
+      <div id="updateForm" style="display:none;">
+        <h2>Uppdatera rätt</h2>
+        <form id="updateDishForm">
+          <input type="text" id="updateName" placeholder="Namn" />
+          <input type="text" id="updateIngredients" placeholder="Ingredienser" />
+          <textarea id="updatePreparationSteps" placeholder="Tillagningssteg"></textarea>
+          <input type="number" id="updateCookingTime" placeholder="Tillagningstid" />
+          <input type="text" id="updateOrigin" placeholder="Ursprung" />
+          <input type="text" id="updateSpiceLevel" placeholder="Kryddighet" />
+          <button type="submit">Uppdatera</button>
+        </form>
+      </div>
+
+      
 <script src="script.js"></script>
 </body>
 </html>

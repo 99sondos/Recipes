@@ -39,6 +39,52 @@ function fetchRecipes() {
   });
 
   //-----------------------------------------------------------------------------
+  // Post anrop för att lägga till nya rätter
+
+  // Skapa en ny rätt när formuläret skickas
+document.getElementById('addRecipeForm').addEventListener('submit', (event) =>{
+    event.preventDefault(); 
+
+     // Hämta data från formuläret
+  const name = document.getElementById('name').value;
+  const ingredients = document.getElementById('ingredients').value.split(',');
+  const preparationSteps = document.getElementById('preparationSteps').value.split('\n');
+  const cookingTime = parseInt(document.getElementById('cookingTime').value);
+  const origin = document.getElementById('origin').value;
+  const spiceLevel = document.getElementById('spiceLevel').value;
+
+  const newDish = {
+    name,
+    ingredients,
+    preparationSteps,
+    cookingTime,
+    origin,
+    spiceLevel
+  };
+
+  // Skicka data till servern via en POST-begäran
+  fetch('http://localhost:5000/api/dishes', {
+    method: 'POST',  //  POST-begäran
+    headers: {
+      'Content-Type': 'application/json'  // Vi skickar JSON-data
+    },
+    body: JSON.stringify(newDish)  // Omvandla objektet till JSON-format
+  })
+    .then(response => response.json())  // Om servern svarar med JSON
+    .then(() => {
+      fetchRecipes();  // Uppdatera tabellen efter att den nya rätten har lagts till
+      document.getElementById('addRecipeForm').reset();  // Återställ formuläret
+    })
+    .catch(error => {
+      console.error('Fel vid skapande av rätt:', error);  // Fångar eventuella fel
+      alert('Det gick inte att lägga till rätten.');
+    });
+});
+
+//-------------------------------------------------------------
+
+
+
 
 
   
