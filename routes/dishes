@@ -1,0 +1,43 @@
+// Importerar express-biblioteket för att skapa en router
+const express = require('express');
+
+// Skapar en ny router-instans från express
+// Den här används för att skapa rutter för /api/dishes
+const router = express.Router();
+
+// Importerar Mongoose-modellen för 'Dish' (recept)
+// Den används för att hämta, skapa, uppdatera och ta bort rätter i databasen
+const Dish = require('../models/Dish');
+
+// GET /api/dishes – hämta alla rätter
+router.get('/', async (req, res) => {
+
+  try {
+    const dishes = await Dish.find(); // hämta alla dokument i databasen
+    res.json(dishes); // skicka som JSON till frontend/Postman
+  } catch (err) {
+    res.status(500).json({ message: 'Fel vid hämtning av rätter' });
+  }
+});
+
+
+
+// POST /api/dishes – Lägg till en ny rätt
+
+
+  router.post('/', async (req, res) => {
+
+    try {
+      const newDish = new Dish(req.body);       // Skapar en ny rätt med datan från Postman
+      await newDish.save();                     // Sparar till databasen
+      res.status(201).json(newDish);            // Skickar tillbaka den skapade rätten
+    } catch (err) {
+      if (err.code === 11000) {
+        res.status(409).json({ message: 'Rätten finns redan ' });
+      } else {
+        res.status(500).json({ message: 'Fel vid skapande av rätt' });
+      }
+    }
+  });
+
+module.exports = router;
