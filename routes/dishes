@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+
 //get begäran för min frontend
 // GET /api/dishes/:id - Hämta rätt baserat på ID
 router.get('/:id', async (req, res) => {
@@ -47,10 +48,7 @@ router.get('/:id', async (req, res) => {
   });
 
 
-
-
-
-
+  
 // GET /api/dishes/:name – Hämta en rätt med namn
 router.get('/:name', async (req, res) => {
     console.log('GET /api/dishes/:name – Hämtar rätt med namn:', req.params.name);
@@ -69,6 +67,12 @@ router.get('/:name', async (req, res) => {
       res.status(500).json({ message: 'Fel vid hämtning av rätt' });
     }
   });
+
+
+
+
+
+
 
 
   

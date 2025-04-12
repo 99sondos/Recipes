@@ -23,7 +23,7 @@ app.use('/api/dishes', dishesRoutes);
 
 //testa så att servern fungerar som den ska
 app.get('/', (req, res) => {
-    res.send('<h1>Välkommen till Recept-API!</h1>');
+    res.send('<h1>test</h1>');
   });
 
 
@@ -31,13 +31,10 @@ app.get('/', (req, res) => {
 
 
 // Anslut till MongoDB med connection string från .env
-mongoose.connect(process.env.CONNECTION_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+mongoose.connect(process.env.CONNECTION_URL,)
   .then(() => console.log('Ansluten till Mongodb databas'))
   .catch((err) => console.error('Fel vid anslutning:', err));
   
   // Starta servern
   const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => console.log(`🚀 Server körs på http://localhost:${PORT}`));
+  app.listen(PORT, () => console.log(` Server körs på http://localhost:${PORT}`));
