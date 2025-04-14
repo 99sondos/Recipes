@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 //get begäran för min frontend
 // GET /api/dishes/:id - Hämta rätt baserat på ID
 router.get('/:id', async (req, res) => {
-    console.log('GET /api/dishes/:id – Hämtar rätt med ID:', req.params.id);  // Debugging log
+    console.log('GET /api/dishes/:id – Hämtar rätt med ID:', req.params.id);  // 
   
     try {
       // Försök att hitta rätten baserat på ID
@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
 
   
 // GET /api/dishes/:name – Hämta en rätt med namn
-router.get('/:name', async (req, res) => {
+router.get('/name/:name', async (req, res) => {
     console.log('GET /api/dishes/:name – Hämtar rätt med namn:', req.params.name);
     try {
       const dish = await Dish.findOne({

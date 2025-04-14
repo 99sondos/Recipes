@@ -10,7 +10,7 @@ const dishSchema = new mongoose.Schema({
   preparationSteps: [String],
   cookingTime: Number,
   origin: String,
-  spiceLevel: String
+  spiceLevel: String,
 });
 
 //skapar en model som heter dish för att använda i resten av programmet
